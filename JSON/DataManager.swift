@@ -67,4 +67,14 @@ class DataManager{
             print("error")
         }
     }
+    
+    func loadObjectFromUserDefaults(){
+        let decoder = JSONDecoder()
+        if let jsonData = UserDefaults.standard.data(forKey: "user"){
+            if let person = try? decoder.decode(Person.self, from: jsonData){
+                print("\(person.name) \(person.age)")
+            }
+        }
+    }
+
 }
